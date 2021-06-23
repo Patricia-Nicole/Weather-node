@@ -13,6 +13,8 @@ const forecast = require('./utils/forecast')
 
 //call express function
 const app = express()
+//for heroku port
+const port = process.env.PORT || 3000
 
 //define paths for express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -31,7 +33,7 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'weather app',
-        name: 'Patri'
+        name: 'Patricia-Nicole Gal'
     })
 })
 
@@ -39,7 +41,7 @@ app.get('', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About me',
-        name: 'Patri'
+        name: 'Patricia-Nicole Gal'
     })
 })
 
@@ -48,7 +50,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'Help message',
         title: 'Help page',
-        name: 'Patri'
+        name: 'Patricia-Nicole Gal'
     })
 })
 
@@ -88,7 +90,7 @@ app.get('/help/*', (req, res) => {
     //res.send('Help article not found')
     res.render('404', {
         title: '404',
-        name: 'Patri',
+        name: 'Patricia-Nicole Gal',
         errorMessage: 'Help article not found'
     })
 })
@@ -98,12 +100,12 @@ app.get('*', (req, res) => {
     //res.send('My 404 page')
     res.render('404', {
         title: 404,
-        name: 'Patri',
+        name: 'Patricia-Nicole Gal',
         errorMessage: 'Page not found'
     })
 })
 
 //start the server
-app.listen(3000, () => {
-    console.log('server is up on port 3000')
+app.listen(port, () => {
+    console.log('server is up on port ' + port)
 })
